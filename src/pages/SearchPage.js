@@ -11,7 +11,7 @@ import Loading from "../components/Loading";
 import ErrorMessageBox from "../components/ErrorMessageBox";
 import Button from "react-bootstrap/Button";
 import Product from "../components/Product";
-import LinkContainer from "react-router-bootstrap/LinkContainer";
+//import LinkContainer from "react-router-bootstrap/LinkContainer";
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -176,7 +176,7 @@ export default function SearchScreen() {
                   Any
                 </Link>
               </li>
-              {prices?.map((p) => (
+              {prices.map((p) => (
                 <li key={p.value}>
                   <Link
                     to={getFilterUrl({ price: p.value })}
@@ -191,7 +191,7 @@ export default function SearchScreen() {
           <div>
             <h3>Avg. Customer Review</h3>
             <ul>
-              {ratings?.map((r) => (
+              {ratings.map((r) => (
                 <li key={r.name}>
                   <Link
                     to={getFilterUrl({ rating: r.rating })}
@@ -269,7 +269,7 @@ export default function SearchScreen() {
 
               <div>
                 {[...Array(pages).keys()].map((x) => (
-                  <LinkContainer
+                  <Link
                     key={x + 1}
                     className="mx-1"
                     to={getFilterUrl({ page: x + 1 })}
@@ -280,7 +280,7 @@ export default function SearchScreen() {
                     >
                       {x + 1}
                     </Button>
-                  </LinkContainer>
+                  </Link>
                 ))}
               </div>
             </>

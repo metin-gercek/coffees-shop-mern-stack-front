@@ -10,7 +10,6 @@ import Header from "./Header";
 import Shipping from "pages/Shipping";
 import Signup from "pages/Signup";
 import ProfilePage from "pages/ProfilePage";
-import { LinkContainer } from "react-router-bootstrap";
 import axios from "axios";
 import { getError } from "../utils";
 import SearchScreen from "pages/SearchPage";
@@ -70,14 +69,15 @@ const App = () => {
             <Nav.Item>
               <strong>Categories</strong>
             </Nav.Item>
-            {categories?.map((category) => (
+            {categories.map((category) => (
               <Nav.Item key={category}>
-                <LinkContainer
-                  to={`/search?category=${category}`}
+                <Nav.Link
+                  href={"/search?category=" + category}
                   onClick={() => setSidebarIsOpen(false)}
+                  className="navbar-text-color"
                 >
-                  <Nav.Link className="navbar-text-color">{category}</Nav.Link>
-                </LinkContainer>
+                  {category}
+                </Nav.Link>
               </Nav.Item>
             ))}
             <SearchBox />
@@ -121,7 +121,7 @@ const App = () => {
                   </AdminRoute>
                 }
               ></Route>
-			   <Route
+              <Route
                 path="/admin/orders"
                 element={
                   <AdminRoute>
